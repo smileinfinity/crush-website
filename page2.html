@@ -3,43 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page 2 - 3D Gallery</title>
+  <title>Executive Presentation - The Gallery</title>
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
+    :root {
+      --bg-color: #121212; /* Deep matte black */
+      --text-main: #e0e0e0; /* Clean off-white */
+      --gold-accent: #bfa071; /* Brushed/Subtle gold */
+      --white-house-serif: 'Playfair Display', serif;
+      --pro-sans: 'Lato', sans-serif;
+    }
+
     body {
       margin: 0;
-      background-color: #111; /* Changed to dark mode to make the 3D pop! */
-      font-family: 'Times New Roman', Times, serif;
-      color: #fdfbf7;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--pro-sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- PPT Style Animations on Load --- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* --- Page Layout --- */
+    .container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      overflow-x: hidden;
     }
-    
-    /* 3D Gallery Section */
-    .photo-side { 
+
+    /* --- 3D Gallery Section (Pro Zoom In animation) --- */
+    .photo-section { 
       width: 100%; 
-      padding-top: 40px;
-      padding-bottom: 20px;
+      padding: 50px 0 20px 0;
+      animation: scaleIn 1.5s ease-out forwards; /* PPT Style transition */
     }
     
     .swiper {
       width: 100%;
       padding-top: 20px;
-      padding-bottom: 40px;
+      padding-bottom: 50px;
     }
 
     .swiper-slide {
       background-position: center;
       background-size: cover;
-      width: 260px; /* Size of the floating 3D card */
-      height: 360px;
-      border-radius: 10px;
+      width: 260px; 
+      height: 380px;
+      border-radius: 4px; /* Slightly sharper corner for pro look */
       overflow: hidden;
-      box-shadow: 0px 15px 35px rgba(0,0,0,0.8);
+      border: 1px solid rgba(191, 160, 113, 0.3); /* Subtle gold border */
+      
+      /* Cinematic Glow Shadow */
+      box-shadow: 0px 10px 50px rgba(191, 160, 113, 0.15); 
     }
 
     .swiper-slide img {
@@ -49,60 +80,127 @@
       object-fit: cover;
     }
 
-    /* Text Section */
-    .text-side { padding: 10px 20px 50px 20px; text-align: center; }
-    h2 { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: normal; color: #d4af37; /* Elegant gold text */ }
-    p { font-size: 16px; line-height: 1.8; color: #ccc; max-width: 400px; margin: 0 auto 30px auto; font-style: italic; }
-    .nav-links { margin-top: 30px; }
-    .nav-links a { text-decoration: none; color: #d4af37; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #d4af37; padding-bottom: 3px; transition: 0.3s; }
+    /* --- Structured Text Section (White House Style) --- */
+    .text-section { 
+      padding: 20px 30px 60px 30px; 
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      
+      /* Staggered PowerPoint animations */
+      animation: fadeInUp 1s ease-out forwards; 
+      animation-delay: 0.5s; /* Appears after background */
+      opacity: 0; /* Starts hidden */
+    }
+
+    .official-divider {
+      width: 60px;
+      height: 2px;
+      background-color: var(--gold-accent);
+      margin: 0 auto 25px auto;
+    }
+
+    h2 { 
+      font-family: var(--white-house-serif);
+      font-size: 32px; 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      margin: 0 0 10px 0; 
+      font-weight: 700; 
+      color: var(--gold-accent); 
+    }
+
+    .sub-heading {
+      font-family: var(--pro-sans);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    p { 
+      font-family: var(--pro-sans);
+      font-size: 16px; 
+      line-height: 1.9; 
+      color: var(--text-main); 
+      margin: 0 auto 40px auto; 
+    }
+
+    /* Official Button Style */
+    .nav-links a { 
+      text-decoration: none; 
+      color: var(--gold-accent); 
+      font-family: var(--pro-sans);
+      font-size: 11px; 
+      letter-spacing: 3px; 
+      text-transform: uppercase; 
+      border: 1px solid var(--gold-accent);
+      padding: 15px 30px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
     
+    .nav-links a:hover {
+      background-color: var(--gold-accent);
+      color: var(--bg-color);
+    }
+    
+    /* Desktop Layout Adaptation */
     @media (min-width: 768px) {
-      body { flex-direction: row; }
-      .photo-side { width: 50%; height: 100vh; display: flex; align-items: center; }
-      .text-side { width: 50%; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+      .container { flex-direction: row; }
+      .photo-section { width: 55%; height: 100vh; display: flex; align-items: center; padding: 0; }
+      .text-section { width: 45%; padding: 80px; display: flex; flex-direction: column; justify-content: center; text-align: left; margin: 0; }
+      .official-divider { margin: 0 0 25px 0; }
+      h2 { font-size: 40px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="photo-side">
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="photo1.jpg" alt="Photo 1"></div>
-        <div class="swiper-slide"><img src="photo2.jpg" alt="Photo 2"></div>
-        <div class="swiper-slide"><img src="photo3.jpg" alt="Photo 3"></div>
-        <div class="swiper-slide"><img src="photo4.jpg" alt="Photo 4"></div>
-        <div class="swiper-slide"><img src="photo5.jpg" alt="Photo 5"></div>
-        <div class="swiper-slide"><img src="photo6.jpg" alt="Photo 6"></div>
-        <div class="swiper-slide"><img src="photo7.jpg" alt="Photo 7"></div>
-        <div class="swiper-slide"><img src="photo8.jpg" alt="Photo 8"></div>
-        <div class="swiper-slide"><img src="photo9.jpg" alt="Photo 9"></div>
-        <div class="swiper-slide"><img src="photo10.jpg" alt="Photo 10"></div>
-        <div class="swiper-slide"><img src="photo11.jpg" alt="Photo 11"></div>
-        <div class="swiper-slide"><img src="photo12.jpg" alt="Photo 12"></div>
-        <div class="swiper-slide"><img src="photo13.jpg" alt="Photo 13"></div>
-        <div class="swiper-slide"><img src="photo14.jpg" alt="Photo 14"></div>
-        <div class="swiper-slide"><img src="photo15.jpg" alt="Photo 15"></div>
-        <div class="swiper-slide"><img src="photo16.jpg" alt="Photo 16"></div>
-        <div class="swiper-slide"><img src="photo17.jpg" alt="Photo 17"></div>
-        <div class="swiper-slide"><img src="photo18.jpg" alt="Photo 18"></div>
-        <div class="swiper-slide"><img src="photo19.jpg" alt="Photo 19"></div>
-        <div class="swiper-slide"><img src="photo20.jpg" alt="Photo 20"></div>
-        <div class="swiper-slide"><img src="photo21.jpg" alt="Photo 21"></div>
-        <div class="swiper-slide"><img src="photo22.jpg" alt="Photo 22"></div>
+  <div class="container">
+    <div class="photo-section">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="photo1.jpg" alt="Presentation 1"></div>
+          <div class="swiper-slide"><img src="photo2.jpg" alt="Presentation 2"></div>
+          <div class="swiper-slide"><img src="photo3.jpg" alt="Presentation 3"></div>
+          <div class="swiper-slide"><img src="photo4.jpg" alt="Presentation 4"></div>
+          <div class="swiper-slide"><img src="photo5.jpg" alt="Presentation 5"></div>
+          <div class="swiper-slide"><img src="photo6.jpg" alt="Presentation 6"></div>
+          <div class="swiper-slide"><img src="photo7.jpg" alt="Presentation 7"></div>
+          <div class="swiper-slide"><img src="photo8.jpg" alt="Presentation 8"></div>
+          <div class="swiper-slide"><img src="photo9.jpg" alt="Presentation 9"></div>
+          <div class="swiper-slide"><img src="photo10.jpg" alt="Presentation 10"></div>
+          <div class="swiper-slide"><img src="photo11.jpg" alt="Presentation 11"></div>
+          <div class="swiper-slide"><img src="photo12.jpg" alt="Presentation 12"></div>
+          <div class="swiper-slide"><img src="photo13.jpg" alt="Presentation 13"></div>
+          <div class="swiper-slide"><img src="photo14.jpg" alt="Presentation 14"></div>
+          <div class="swiper-slide"><img src="photo15.jpg" alt="Presentation 15"></div>
+          <div class="swiper-slide"><img src="photo16.jpg" alt="Presentation 16"></div>
+          <div class="swiper-slide"><img src="photo17.jpg" alt="Presentation 17"></div>
+          <div class="swiper-slide"><img src="photo18.jpg" alt="Presentation 18"></div>
+          <div class="swiper-slide"><img src="photo19.jpg" alt="Presentation 19"></div>
+          <div class="swiper-slide"><img src="photo20.jpg" alt="Presentation 20"></div>
+          <div class="swiper-slide"><img src="photo21.jpg" alt="Presentation 21"></div>
+          <div class="swiper-slide"><img src="photo22.jpg" alt="Presentation 22"></div>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="text-side">
-    <h2>A Thousand Words</h2>
-    <p>
-      "ପ୍ରତିଟି ଛବିରେ ତୋର ଏକ ନୂଆ କାହାଣୀ..."<br><br>
-      Every picture holds a different story,<br>
-      but they all reflect the same beautiful soul.
-    </p>
-    <div class="nav-links">
-      <a href="page3.html">Next Page &rarr;</a>
+    
+    <div class="text-section">
+      <div class="official-divider"></div>
+      <h2>Executive Gallery</h2>
+      <p class="sub-heading">Official Portrait Collection</p>
+      
+      <p>
+        "ପ୍ରତିଟି ଛବିରେ ତୋର ଏକ ନୂଆ କାହାଣୀ..."<br><br>
+        A curated visualization showcasing unparalleled elegance. Every artifact within this collection reflects a graceful narrative, standardizing beauty at an executive level.
+      </p>
+      
+      <div class="nav-links">
+        <a href="page3.html">Proceed to Next Exhibit &rarr;</a>
+      </div>
     </div>
   </div>
 
@@ -114,18 +212,21 @@
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: "auto",
-      loop: true, /* Makes it spin endlessly */
+      loop: true,
       coverflowEffect: {
-        rotate: 40, /* Angle of the 3D rotation */
-        stretch: 0,
-        depth: 200, /* How far back the side photos get pushed */
+        rotate: 35, /* Professional angle */
+        stretch: 10,
+        depth: 160, /* Creates depth without distortion */
         modifier: 1,
-        slideShadows: true, /* Adds dynamic 3D shadows */
+        slideShadows: true, /* Dynamic shadows essential for 3D realism */
       },
       autoplay: {
-        delay: 2500, /* Time between auto-swipes */
+        delay: 3000, /* Smooth PPT timing */
         disableOnInteraction: false,
       },
+      // Enables swiping with mouse or finger
+      mousewheel: true,
+      keyboard: true,
     });
   </script>
 
