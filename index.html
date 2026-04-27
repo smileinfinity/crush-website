@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unbreakable Bond</title>
+  <style>
+    body {
+      background-color: #fce4ec; /* Soft pink background */
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .slideshow-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .slideshow-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out; /* Smooth 2-second crossfade */
+    }
+    .slideshow-container img.active {
+      opacity: 1; /* Makes the current image visible */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Unbreakable Bond</h1>
+  
+  <div class="slideshow-container">
+    <img src="photo1.jpg" class="active" alt="Photo 1">
+    <img src="photo2.jpg" alt="Photo 2">
+    <img src="photo3.jpg" alt="Photo 3">
+    <img src="photo4.jpg" alt="Photo 4">
+    <img src="photo5.jpg" alt="Photo 5">
+    <img src="photo6.jpg" alt="Photo 6">
+    <img src="photo7.jpg" alt="Photo 7">
+    <img src="photo8.jpg" alt="Photo 8">
+    <img src="photo9.jpg" alt="Photo 9">
+    <img src="photo10.jpg" alt="Photo 10">
+    <img src="photo11.jpg" alt="Photo 11">
+    <img src="photo12.jpg" alt="Photo 12">
+    <img src="photo13.jpg" alt="Photo 13">
+    <img src="photo14.jpg" alt="Photo 14">
+    <img src="photo15.jpg" alt="Photo 15">
+    <img src="photo16.jpg" alt="Photo 16">
+    <img src="photo17.jpg" alt="Photo 17">
+    <img src="photo18.jpg" alt="Photo 18">
+    <img src="photo19.jpg" alt="Photo 19">
+    <img src="photo20.jpg" alt="Photo 20">
+    <img src="photo21.jpg" alt="Photo 21">
+    <img src="photo22.jpg" alt="Photo 22">
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slideshow-container img');
+    
+    // This script crossfades to the next photo every 4 seconds
+    setInterval(() => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    }, 4000); 
+  </script>
+
+</body>
+</html>
+
