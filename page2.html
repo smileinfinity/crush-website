@@ -3,50 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page 2 - The Gallery</title>
+  <title>Page 2 - 3D Gallery</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
     body {
       margin: 0;
-      background-color: #fdfbf7;
+      background-color: #111; /* Changed to dark mode to make the 3D pop! */
       font-family: 'Times New Roman', Times, serif;
-      color: #111;
+      color: #fdfbf7;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     
-    /* Slideshow Container for the photo side */
+    /* 3D Gallery Section */
     .photo-side { 
-      position: relative;
       width: 100%; 
-      height: 50vh; 
-      overflow: hidden;
+      padding-top: 40px;
+      padding-bottom: 20px;
     }
-    .photo-side img { 
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-    .photo-side img.active {
-      opacity: 1;
+    
+    .swiper {
+      width: 100%;
+      padding-top: 20px;
+      padding-bottom: 40px;
     }
 
-    /* Text Side */
-    .text-side { padding: 40px 20px; text-align: center; }
-    h2 { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: normal; }
-    p { font-size: 16px; line-height: 1.8; color: #444; max-width: 400px; margin: 0 auto 30px auto; font-style: italic; }
-    .nav-links { margin-top: 40px; }
-    .nav-links a { text-decoration: none; color: #111; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #111; padding-bottom: 3px; }
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 260px; /* Size of the floating 3D card */
+      height: 360px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 15px 35px rgba(0,0,0,0.8);
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Text Section */
+    .text-side { padding: 10px 20px 50px 20px; text-align: center; }
+    h2 { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: normal; color: #d4af37; /* Elegant gold text */ }
+    p { font-size: 16px; line-height: 1.8; color: #ccc; max-width: 400px; margin: 0 auto 30px auto; font-style: italic; }
+    .nav-links { margin-top: 30px; }
+    .nav-links a { text-decoration: none; color: #d4af37; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #d4af37; padding-bottom: 3px; transition: 0.3s; }
     
-    /* Layout for wider screens */
     @media (min-width: 768px) {
       body { flex-direction: row; }
-      .photo-side { width: 50%; height: 100vh; }
+      .photo-side { width: 50%; height: 100vh; display: flex; align-items: center; }
       .text-side { width: 50%; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
     }
   </style>
@@ -54,53 +66,67 @@
 <body>
 
   <div class="photo-side">
-    <img src="photo1.jpg" class="active" alt="Photo 1">
-    <img src="photo2.jpg" alt="Photo 2">
-    <img src="photo3.jpg" alt="Photo 3">
-    <img src="photo4.jpg" alt="Photo 4">
-    <img src="photo5.jpg" alt="Photo 5">
-    <img src="photo6.jpg" alt="Photo 6">
-    <img src="photo7.jpg" alt="Photo 7">
-    <img src="photo8.jpg" alt="Photo 8">
-    <img src="photo9.jpg" alt="Photo 9">
-    <img src="photo10.jpg" alt="Photo 10">
-    <img src="photo11.jpg" alt="Photo 11">
-    <img src="photo12.jpg" alt="Photo 12">
-    <img src="photo13.jpg" alt="Photo 13">
-    <img src="photo14.jpg" alt="Photo 14">
-    <img src="photo15.jpg" alt="Photo 15">
-    <img src="photo16.jpg" alt="Photo 16">
-    <img src="photo17.jpg" alt="Photo 17">
-    <img src="photo18.jpg" alt="Photo 18">
-    <img src="photo19.jpg" alt="Photo 19">
-    <img src="photo20.jpg" alt="Photo 20">
-    <img src="photo21.jpg" alt="Photo 21">
-    <img src="photo22.jpg" alt="Photo 22">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="photo1.jpg" alt="Photo 1"></div>
+        <div class="swiper-slide"><img src="photo2.jpg" alt="Photo 2"></div>
+        <div class="swiper-slide"><img src="photo3.jpg" alt="Photo 3"></div>
+        <div class="swiper-slide"><img src="photo4.jpg" alt="Photo 4"></div>
+        <div class="swiper-slide"><img src="photo5.jpg" alt="Photo 5"></div>
+        <div class="swiper-slide"><img src="photo6.jpg" alt="Photo 6"></div>
+        <div class="swiper-slide"><img src="photo7.jpg" alt="Photo 7"></div>
+        <div class="swiper-slide"><img src="photo8.jpg" alt="Photo 8"></div>
+        <div class="swiper-slide"><img src="photo9.jpg" alt="Photo 9"></div>
+        <div class="swiper-slide"><img src="photo10.jpg" alt="Photo 10"></div>
+        <div class="swiper-slide"><img src="photo11.jpg" alt="Photo 11"></div>
+        <div class="swiper-slide"><img src="photo12.jpg" alt="Photo 12"></div>
+        <div class="swiper-slide"><img src="photo13.jpg" alt="Photo 13"></div>
+        <div class="swiper-slide"><img src="photo14.jpg" alt="Photo 14"></div>
+        <div class="swiper-slide"><img src="photo15.jpg" alt="Photo 15"></div>
+        <div class="swiper-slide"><img src="photo16.jpg" alt="Photo 16"></div>
+        <div class="swiper-slide"><img src="photo17.jpg" alt="Photo 17"></div>
+        <div class="swiper-slide"><img src="photo18.jpg" alt="Photo 18"></div>
+        <div class="swiper-slide"><img src="photo19.jpg" alt="Photo 19"></div>
+        <div class="swiper-slide"><img src="photo20.jpg" alt="Photo 20"></div>
+        <div class="swiper-slide"><img src="photo21.jpg" alt="Photo 21"></div>
+        <div class="swiper-slide"><img src="photo22.jpg" alt="Photo 22"></div>
+      </div>
+    </div>
   </div>
   
   <div class="text-side">
     <h2>A Thousand Words</h2>
-    
     <p>
       "ପ୍ରତିଟି ଛବିରେ ତୋର ଏକ ନୂଆ କାହାଣୀ..."<br><br>
       Every picture holds a different story,<br>
       but they all reflect the same beautiful soul.
     </p>
-
     <div class="nav-links">
       <a href="page3.html">Next Page &rarr;</a>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script>
-    let currentIndex = 0;
-    const images = document.querySelectorAll('.photo-side img');
-    
-    setInterval(() => {
-      images[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add('active');
-    }, 4000); 
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      loop: true, /* Makes it spin endlessly */
+      coverflowEffect: {
+        rotate: 40, /* Angle of the 3D rotation */
+        stretch: 0,
+        depth: 200, /* How far back the side photos get pushed */
+        modifier: 1,
+        slideShadows: true, /* Adds dynamic 3D shadows */
+      },
+      autoplay: {
+        delay: 2500, /* Time between auto-swipes */
+        disableOnInteraction: false,
+      },
+    });
   </script>
 
 </body>
