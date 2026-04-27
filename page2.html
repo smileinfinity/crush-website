@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page 2</title>
+  <title>Page 2 - The Gallery</title>
   <style>
     body {
       margin: 0;
@@ -11,51 +11,39 @@
       font-family: 'Times New Roman', Times, serif;
       color: #111;
       display: flex;
-      flex-direction: column; /* Stacks on mobile */
+      flex-direction: column;
       min-height: 100vh;
     }
-    .photo-side {
-      width: 100%;
-      height: 50vh; /* Takes up top half of screen on phone */
-    }
-    .photo-side img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .text-side {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    h2 {
-      font-size: 28px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      font-weight: normal;
-    }
-    p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #444;
-      max-width: 400px;
-      margin: 0 auto 30px auto;
-      font-style: italic; /* Gives it that poetic feel */
-    }
-    .nav-links {
-      margin-top: 40px;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #111;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-bottom: 1px solid #111;
-      padding-bottom: 3px;
-    }
     
-    /* Makes it side-by-side on larger screens like tablets/laptops */
+    /* Slideshow Container for the photo side */
+    .photo-side { 
+      position: relative;
+      width: 100%; 
+      height: 50vh; 
+      overflow: hidden;
+    }
+    .photo-side img { 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+    .photo-side img.active {
+      opacity: 1;
+    }
+
+    /* Text Side */
+    .text-side { padding: 40px 20px; text-align: center; }
+    h2 { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: normal; }
+    p { font-size: 16px; line-height: 1.8; color: #444; max-width: 400px; margin: 0 auto 30px auto; font-style: italic; }
+    .nav-links { margin-top: 40px; }
+    .nav-links a { text-decoration: none; color: #111; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #111; padding-bottom: 3px; }
+    
+    /* Layout for wider screens */
     @media (min-width: 768px) {
       body { flex-direction: row; }
       .photo-side { width: 50%; height: 100vh; }
@@ -66,17 +54,37 @@
 <body>
 
   <div class="photo-side">
-    <img src="photo2.jpg" alt="Editorial Photo">
+    <img src="photo1.jpg" class="active" alt="Photo 1">
+    <img src="photo2.jpg" alt="Photo 2">
+    <img src="photo3.jpg" alt="Photo 3">
+    <img src="photo4.jpg" alt="Photo 4">
+    <img src="photo5.jpg" alt="Photo 5">
+    <img src="photo6.jpg" alt="Photo 6">
+    <img src="photo7.jpg" alt="Photo 7">
+    <img src="photo8.jpg" alt="Photo 8">
+    <img src="photo9.jpg" alt="Photo 9">
+    <img src="photo10.jpg" alt="Photo 10">
+    <img src="photo11.jpg" alt="Photo 11">
+    <img src="photo12.jpg" alt="Photo 12">
+    <img src="photo13.jpg" alt="Photo 13">
+    <img src="photo14.jpg" alt="Photo 14">
+    <img src="photo15.jpg" alt="Photo 15">
+    <img src="photo16.jpg" alt="Photo 16">
+    <img src="photo17.jpg" alt="Photo 17">
+    <img src="photo18.jpg" alt="Photo 18">
+    <img src="photo19.jpg" alt="Photo 19">
+    <img src="photo20.jpg" alt="Photo 20">
+    <img src="photo21.jpg" alt="Photo 21">
+    <img src="photo22.jpg" alt="Photo 22">
   </div>
   
   <div class="text-side">
-    <h2>The Spark</h2>
+    <h2>A Thousand Words</h2>
     
-    <p There is a silent conversation between the stars and the sea at night; it is the most beautiful thing I have ever heard.>
-      "Write your beautiful words here.<br>
-      Use the &lt;br&gt; tag to drop down<br>
-      to the next line if you are writing a poem.<br>
-      Make it meaningful and elegant."
+    <p>
+      "ପ୍ରତିଟି ଛବିରେ ତୋର ଏକ ନୂଆ କାହାଣୀ..."<br><br>
+      Every picture holds a different story,<br>
+      but they all reflect the same beautiful soul.
     </p>
 
     <div class="nav-links">
@@ -84,6 +92,16 @@
     </div>
   </div>
 
+  <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.photo-side img');
+    
+    setInterval(() => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    }, 4000); 
+  </script>
+
 </body>
 </html>
-
